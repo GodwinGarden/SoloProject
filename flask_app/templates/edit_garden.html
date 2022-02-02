@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Garden Info</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container">
+          <a class="nav-link active" href="/">GardenVisit</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/dashboard">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/new/garden">New Garden</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            </form>
+          </div>
+        </div>
+      </nav>
+      <main class="container">
+        <div class="bg-light p-4 rounded mt-5">
+    <Div class="text-center text-primary"> 
+        <H2>Edit a Garden Listing</H2>
+     </Div>
+    </main>
+
+    <form action="/update/garden" method="post" class="col-md-6 p-4 my-2 bg-dark text-light mx-auto">
+        {% with messages = get_flashed_messages(category_filter=['garden']) %}
+            {% if messages %}
+            <div class="alert alert-danger" role="alert">
+                <strong>Please complete all fields</strong>
+                    {% for message in messages %}
+                    <p>{{message}}</p>
+                    {% endfor %}
+            </div>
+            {% endif %}
+        {% endwith %}
+        
+        <div class="d-flex justify-content-between col-15">
+            <input type="hidden" name="id" value={{edit.id}}>
+            <div class="col-8">
+                <div class="form-group">
+                    <label for="garden_name">Garden:
+                    <input type="text" name="garden_name" class="form-control" value="{{edit.garden_name}}" required></label>
+                </div>
+                <div class="form-group">
+                    <label for="web_page">Web Page:
+                    <input type="text" name="web_page"  cols="30" rows="1" class="form-control" value="{{edit.web_page}}" required></label>
+                </div>
+                <div class="form-group">
+                    <label for="city">City:
+                    <input type="text" name="city"  cols="30" rows="1" class="form-control" value="{{edit.city}}" required></label>
+                </div>
+                <div class="row mt-3">
+                    <div class="col">
+                        <label for="state">State:
+                        <select name="state"  class="form-select" value="{{edit.state}}" required></label>
+                            <option selected>Choose</option>
+                            <option>AK</option>
+                            <option>AL</option>
+                            <option>AZ</option>
+                            <option>AR</option>
+                            <option>CA</option>
+                            <option>CO</option>
+                            <option>CT</option>
+                            <option>DE</option>
+                            <option>FL</option>
+                            <option>GA</option>
+                            <option>HI</option>
+                            <option>ID</option>
+                            <option>IL</option>
+                            <option>IN</option>
+                            <option>IA</option>
+                            <option>KS</option>
+                            <option>KY</option>
+                            <option>LA</option>
+                            <option>ME</option>
+                            <option>MD</option>
+                            <option>MA</option>
+                            <option>MA</option>
+                            <option>MI</option>
+                            <option>MN</option>
+                            <option>MS</option>
+                            <option>MO</option>
+                            <option>MT</option>
+                            <option>NE</option>
+                            <option>NV</option>
+                            <option>NH</option>
+                            <option>NJ</option>
+                            <option>NM</option>
+                            <option>NY</option>
+                            <option>NC</option>
+                            <option>ND</option>
+                            <option>OH</option>
+                            <option>OK</option>
+                            <option>OR</option>
+                            <option>PA</option>
+                            <option>RI</option>
+                            <option>SC</option>
+                            <option>SD</option>
+                            <option>TN</option>
+                            <option>TX</option>
+                            <option>UT</option>
+                            <option>VA</option>
+                            <option>WA</option>
+                            <option>WV</option>
+                            <option>WI</option>
+                            <option>WY</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="country">Country:
+                            <select name="country" class="form-select" value="{{edit.country}}"required></label>
+                            <option selected>Choose</option>
+                            <option>CAN</option>
+                            <option>MEX</option>
+                            <option>USA</option>
+                            <option>TBD</option>
+                            </select>
+                        </div>
+                    </div>
+                <div class="form-group">
+                    <label for="comments">Comments:
+                    <input type="text" name="comments"  cols="30" rows="20" class="form-control" value="{{edit.comments}}" required></label>
+                </div>
+                <input type="submit" value="Update Info" class="btn btn-primary">
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

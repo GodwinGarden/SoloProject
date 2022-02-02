@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row row-margin-05">
+    <H1 class="text-center mt-5">Garden Master List</H1>
+    <nav class="d-flex justify-content-between align-items-center col-12 mt-5">
+            <H2 class="text-center">Welcome Visitor Name Here!</H2>
+                <div class="d-flex col-4 justify-content-around">
+                <a href="/dashboard">Home</a>
+                <a href="/new/garden">New Garden</a>
+                </div>
+    </nav>
+
+    <h2>Search By:</h2>
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+          Category
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+          <li><button class="dropdown-item" type="button">Botanical</button></li>
+          <li><button class="dropdown-item" type="button">Demonstration</button></li>
+          <li><button class="dropdown-item" type="button">Formal</button></li>
+          <li><button class="dropdown-item" type="button">Rose</button></li>
+          <li><button class="dropdown-item" type="button">Urban</button></li>
+        </ul>
+      </div>
+
+
+    <div class="col-8 mx-auto mt-3">
+        <H3 class="text-center">All Gardens</H3>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Garden</th>
+                    <th scope="col">City</th>
+                    <th scope="col">State</th>
+                    <th scope="col">Country</th>
+                    <th scope="col">Visitor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">Garden Name</td>
+                    <td>City</td>
+                    <td>State</td>
+                    <td>Country</td>
+                    <td>Visitor</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

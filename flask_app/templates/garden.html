@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garden Info</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container">
+      <a class="nav-link active" href="/">GardenVisit</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/dashboard">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/new/garden">New Garden</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        </form>
+      </div>
+    </div>
+  </nav>
+<main class="container mt-5">
+  <Div class="text-center text-primary p-4"> 
+    <H2>{{garden.garden_name}}</H2>
+ </Div>
+  <div class="row mb-2">
+    <div class="col-md-12">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <a href="http://">{{garden.web_page}}</a>
+          <p class="card-text">Vistor: {{garden.visitor.first_name}} {{garden.visitor.last_name}}</p>
+          <p class="card-text">City: <span id="address">{{garden.city}}</span></p>
+          <p class="card-text">Country: {{garden.country}}</p>
+          <p class="card-text">Comments: {{garden.comments}}</p>
+        </div>
+      </div>
+    </div>
+</main>
+ <div>
+      <img src="{{ url_for('static', filename='img/central_garden1.jpg') }}" alt="placeholder image" class="rounded float-right">
+    </div>
+  </div>
+
+    <style class="col-10">
+      #map {
+        height: 80%;
+      }
+      html, body {
+        height: 70%;
+        width: 100%;
+        margin: 20;
+        padding: 10;
+      }
+    </style>
+    <div id="map">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" ></script>
+      <script>
+        let map;
+
+        address = document.getElementById('address')
+
+        function initMap() {
+          let map_data;
+            $.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address.innerHTML}&key=AIzaSyCHBhCOKVASTFkFZM2DqvN-HfwN4G2OUr4&callback=initMap`,
+            function (data, textStatus, jqXHR) {
+                console.log('status: ' + textStatus + ', data:' + data.results);
+                for (key in data) {
+                    console.log(key, data[key])
+                }
+                map_data = {...data['results'][0].geometry.location};
+                console.log (map_data);
+                console.log(map_data)
+                map = new google.maps.Map(document.getElementById("map"), {
+                // center: map_data,
+                center:new google.maps.LatLng(map_data.lat,map_data.lng),
+                zoom: 8,
+              });
+            })
+
+        }
+      </script>
+      <script async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHBhCOKVASTFkFZM2DqvN-HfwN4G2OUr4&callback=initMap">
+      </script>
+    </div>
+
+</body>
+</html>
