@@ -78,7 +78,7 @@
 
         function initMap() {
           let map_data;
-            $.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address.innerHTML}&key=AIzaSyCHBhCOKVASTFkFZM2DqvN-HfwN4G2OUr4&callback=initMap`,
+            $.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address.innerHTML}&key=AIzaSyXXXXXXXXX&callback=initMap`,
             function (data, textStatus, jqXHR) {
                 console.log('status: ' + textStatus + ', data:' + data.results);
                 for (key in data) {
